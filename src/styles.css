@@ -5,9 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Space Grotesk", "Noto Sans TC", sans-serif;
-  --font-sans: "Noto Sans TC", "Space Grotesk", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -21,6 +19,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -29,39 +28,35 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  --color-success: var(--success);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ink: var(--ink);
-  --color-ink-foreground: var(--ink-foreground);
 }
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.975 0.012 85);
-  --foreground: oklch(0.22 0.04 255);
-  --card: oklch(0.995 0.005 85);
-  --card-foreground: oklch(0.22 0.04 255);
-  --popover: oklch(0.995 0.005 85);
-  --popover-foreground: oklch(0.22 0.04 255);
-  --primary: oklch(0.68 0.19 42);
-  --primary-foreground: oklch(0.99 0.01 85);
-  --secondary: oklch(0.93 0.02 85);
-  --secondary-foreground: oklch(0.22 0.04 255);
-  --muted: oklch(0.94 0.015 85);
-  --muted-foreground: oklch(0.5 0.03 255);
-  --accent: oklch(0.88 0.08 75);
-  --accent-foreground: oklch(0.22 0.04 255);
-  --destructive: oklch(0.58 0.22 27);
+  --background: oklch(0.14 0.01 285);
+  --foreground: oklch(0.96 0.005 285);
+  --card: oklch(0.18 0.015 285);
+  --card-foreground: oklch(0.96 0.005 285);
+  --popover: oklch(0.18 0.015 285);
+  --popover-foreground: oklch(0.96 0.005 285);
+  --primary: oklch(0.62 0.22 293);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-glow: oklch(0.72 0.18 310);
+  --secondary: oklch(0.22 0.02 285);
+  --secondary-foreground: oklch(0.96 0.005 285);
+  --muted: oklch(0.22 0.02 285);
+  --muted-foreground: oklch(0.68 0.02 285);
+  --accent: oklch(0.26 0.06 293);
+  --accent-foreground: oklch(0.9 0.08 293);
+  --destructive: oklch(0.65 0.21 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --success: oklch(0.6 0.14 155);
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.68 0.19 42);
-  --ink: oklch(0.22 0.04 255);
-  --ink-foreground: oklch(0.97 0.012 85);
-  --shadow-ticket: 0 30px 60px -25px color-mix(in oklab, var(--ink) 40%, transparent);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.62 0.22 293);
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--primary) 60%, transparent);
 }
 
 @layer base {
@@ -70,15 +65,23 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
 }
 
-@utility shadow-ticket { box-shadow: var(--shadow-ticket); }
-@utility dotted-grid {
-  background-image: radial-gradient(color-mix(in oklab, var(--ink) 12%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px;
+@utility bg-gradient-primary { background-image: var(--gradient-primary); }
+@utility text-gradient {
+  background-image: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
 }
-@utility perforation {
-  border-top: 2px dashed var(--color-border);
+@utility shadow-glow { box-shadow: var(--shadow-glow); }
+@utility hero-glow {
+  background: radial-gradient(60% 50% at 50% 0%, color-mix(in oklab, var(--primary) 28%, transparent), transparent 70%);
+}
+@utility reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  &[data-visible="true"] { opacity: 1; transform: none; }
 }
