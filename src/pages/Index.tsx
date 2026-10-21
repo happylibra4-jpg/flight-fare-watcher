@@ -1,29 +1,38 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router";
 import { ArrowRight, BellRing, Radar, XCircle } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal } from "@/components/Reveal";
+import { useDocumentHead } from "@/hooks/use-document-head";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
+const features = [
+  {
+    icon: Radar,
+    title: "盯緊熱門航線 (Always-on route watching)",
+    body: "持續監控台北出發的熱門航線（東京、首爾），自動抓最低票價。",
+  },
+  {
+    icon: BellRing,
+    title: "達標自動通知 (Target-price email alerts)",
+    body: "低於你設定的目標價，就寄 email 提醒你，附上立即訂購連結。",
+  },
+  { icon: XCircle, title: "隨時取消 (Cancel anytime)", body: "月訂閱制，不想用隨時停，沒有綁約。" },
+];
+
+export default function Index() {
+  useDocumentHead({
+    title: "Flight Price Notifier 機票降價通知 — 台北出發航線降價提醒",
     meta: [
-      { title: "Flight Price Notifier 機票降價通知 — 台北出發航線降價提醒" },
-      { name: "description", content: "Set a route and a target price — we email you when the fare from Taipei drops." },
+      {
+        name: "description",
+        content: "Set a route and a target price — we email you when the fare from Taipei drops.",
+      },
       { property: "og:title", content: "Flight Price Notifier 機票降價通知" },
       { property: "og:description", content: "設定航線與目標價，機票降價就通知你。" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-  }),
-  component: Index,
-});
+  });
 
-const features = [
-  { icon: Radar, title: "盯緊熱門航線 (Always-on route watching)", body: "持續監控台北出發的熱門航線（東京、首爾），自動抓最低票價。" },
-  { icon: BellRing, title: "達標自動通知 (Target-price email alerts)", body: "低於你設定的目標價，就寄 email 提醒你，附上立即訂購連結。" },
-  { icon: XCircle, title: "隨時取消 (Cancel anytime)", body: "月訂閱制，不想用隨時停，沒有綁約。" },
-];
-
-function Index() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -37,7 +46,9 @@ function Index() {
               <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl">
                 <span className="text-gradient">Flight Price Notifier</span>
               </h1>
-              <p className="mt-6 text-xl font-semibold sm:text-2xl">設定航線與目標價，機票降價就通知你</p>
+              <p className="mt-6 text-xl font-semibold sm:text-2xl">
+                設定航線與目標價，機票降價就通知你
+              </p>
               <p className="mt-3 text-base text-muted-foreground sm:text-lg">
                 Set a route and a target price — we email you when the fare drops.
               </p>
@@ -67,7 +78,9 @@ function Index() {
           </div>
         </section>
       </main>
-      <footer className="border-t py-8 text-center text-sm text-muted-foreground">© 2026 Flight Price Notifier</footer>
+      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
+        © 2026 Flight Price Notifier
+      </footer>
     </div>
   );
 }
