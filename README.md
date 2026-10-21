@@ -8,16 +8,6 @@ A public landing page (/) with:
 
 Hero section: product name "Flight Price Notifier" prominently displayed, value prop 「設定航線與目標價，機票降價就通知你」 (English subtitle: "Set a route and a target price — we email you when the fare drops."), and a primary CTA button labeled "Sign in / 登入" in the top-right header.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/1adaf535-dc4e-4300-afda-f5441f88c011).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 This is a plain **Vite + React single-page app** (React Router for client-side routing, Supabase for auth, Tailwind for styling). There is no server-side rendering.
@@ -43,7 +33,14 @@ Routes are declared in `src/App.tsx`.
 
 ### Environment
 
-The Supabase client reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` at build time (see `.env`).
+The app uses its own Supabase project (`ihoriovregeiulxtsbga`). The single client in `src/integrations/supabase/client.ts` reads these at build time:
+
+| Variable | Value |
+| --- | --- |
+| `VITE_SUPABASE_URL` | Supabase project URL |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Publishable key (`sb_publishable_…`, replaces the legacy anon key) |
+
+Locally they come from `.env`. On Vercel, add both under **Project → Settings → Environment Variables** and redeploy.
 
 ### Deploying to Vercel
 

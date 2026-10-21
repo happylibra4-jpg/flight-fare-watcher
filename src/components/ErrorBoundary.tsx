@@ -1,5 +1,4 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
-import { reportLovableError } from "@/lib/lovable-error-reporting";
 
 type Props = { children: ReactNode };
 type State = { error: unknown };
@@ -14,7 +13,6 @@ export class ErrorBoundary extends Component<Props, State> {
 
   override componentDidCatch(error: unknown, _info: ErrorInfo) {
     console.error(error);
-    reportLovableError(error, { boundary: "root_error_boundary" });
   }
 
   reset = () => this.setState({ error: null });
