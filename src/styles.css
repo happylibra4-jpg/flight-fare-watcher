@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Nunito", "Noto Sans TC", system-ui, sans-serif;
-  --font-display: "Fredoka", "Noto Sans TC", "Nunito", system-ui, sans-serif;
+  --font-sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -35,41 +35,38 @@
 }
 
 :root {
-  /* Autumn pumpkin palette — misty sage sky, pumpkin orange, olive plaid, golden foliage, weathered steel */
+  /* Cinematic night palette — charcoal sky, moonlit silver, cloud-sea grey */
   --radius: 1rem;
-  --background: oklch(0.925 0.014 112);
-  --foreground: oklch(0.28 0.035 52);
-  --card: oklch(0.975 0.014 85);
-  --card-foreground: oklch(0.28 0.035 52);
-  --popover: oklch(0.975 0.014 85);
-  --popover-foreground: oklch(0.28 0.035 52);
-  --primary: oklch(0.67 0.16 52);
-  --primary-foreground: oklch(0.22 0.04 45);
-  --primary-glow: oklch(0.79 0.14 74);
-  --secondary: oklch(0.88 0.025 100);
-  --secondary-foreground: oklch(0.3 0.035 60);
-  --muted: oklch(0.89 0.018 100);
-  --muted-foreground: oklch(0.46 0.035 65);
-  --accent: oklch(0.88 0.045 125);
-  --accent-foreground: oklch(0.37 0.07 132);
-  --destructive: oklch(0.53 0.19 30);
+  --background: oklch(0.17 0.008 250);
+  --foreground: oklch(0.95 0.004 90);
+  --card: oklch(0.21 0.008 250 / 72%);
+  --card-foreground: oklch(0.95 0.004 90);
+  --popover: oklch(0.21 0.008 250);
+  --popover-foreground: oklch(0.95 0.004 90);
+  --primary: oklch(0.95 0.006 85);
+  --primary-foreground: oklch(0.18 0.008 250);
+  --primary-glow: oklch(0.82 0.01 240);
+  --secondary: oklch(0.26 0.008 250);
+  --secondary-foreground: oklch(0.95 0.004 90);
+  --muted: oklch(0.26 0.008 250);
+  --muted-foreground: oklch(0.72 0.01 250);
+  --accent: oklch(0.28 0.01 250 / 80%);
+  --accent-foreground: oklch(0.88 0.01 240);
+  --destructive: oklch(0.7 0.17 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.42 0.05 55 / 18%);
-  --input: oklch(0.42 0.05 55 / 24%);
-  --ring: oklch(0.67 0.16 52);
-  --pumpkin-deep: oklch(0.52 0.15 45);
-  --steel: oklch(0.42 0.015 180);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.82 0.01 240);
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
-  --gradient-title: linear-gradient(160deg, var(--primary-glow) 0%, var(--primary) 45%, var(--pumpkin-deep) 100%);
-  --shadow-glow: 0 18px 40px -18px color-mix(in oklab, var(--pumpkin-deep) 70%, transparent),
-    inset 0 -3px 0 color-mix(in oklab, var(--pumpkin-deep) 45%, transparent);
-  --shadow-card: 0 1px 0 color-mix(in oklab, white 70%, transparent) inset,
-    0 18px 40px -24px color-mix(in oklab, var(--pumpkin-deep) 45%, transparent);
-  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --gradient-title: linear-gradient(180deg, oklch(0.99 0.003 90) 0%, oklch(0.86 0.008 240) 100%);
+  --shadow-glow: 0 12px 34px -14px oklch(0 0 0 / 70%), 0 0 0 1px oklch(1 0 0 / 8%) inset;
+  --shadow-card: 0 1px 0 oklch(1 0 0 / 6%) inset, 0 24px 50px -28px oklch(0 0 0 / 80%);
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 @layer base {
   * { border-color: var(--color-border); }
+  html { color-scheme: dark; }
   body {
     position: relative;
     background-color: var(--color-background);
@@ -77,34 +74,32 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  /* Misty overcast sky fading into golden autumn haze */
+  /* Mountain above a sea of clouds at night */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -2;
     pointer-events: none;
-    background:
-      radial-gradient(45% 40% at 0% 70%, oklch(0.84 0.1 85 / 55%), transparent 70%),
-      radial-gradient(40% 38% at 100% 60%, oklch(0.84 0.1 80 / 50%), transparent 70%),
-      radial-gradient(70% 45% at 50% 0%, oklch(0.97 0.006 120 / 80%), transparent 75%),
-      linear-gradient(180deg, oklch(0.86 0.016 150) 0%, oklch(0.92 0.014 115) 40%, oklch(0.93 0.025 85) 100%);
+    background: url("/clouds.svg") center bottom / cover no-repeat, var(--color-background);
   }
+  /* Film grain + vignette */
   body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.22;
-    background-image: var(--grain);
-    mix-blend-mode: multiply;
+    background:
+      radial-gradient(120% 90% at 50% 40%, transparent 50%, oklch(0 0 0 / 60%) 100%),
+      var(--grain);
   }
   h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
-  ::selection { background: color-mix(in oklab, var(--primary-glow) 55%, transparent); }
+  h1 { font-weight: 600; line-height: 1.02; }
+  ::selection { background: oklch(1 0 0 / 22%); }
 }
 
 @utility bg-gradient-primary { background-image: var(--gradient-primary); }
@@ -112,15 +107,16 @@
   background-image: var(--gradient-title);
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 2px 0 color-mix(in oklab, white 55%, transparent))
-    drop-shadow(0 10px 18px color-mix(in oklab, var(--pumpkin-deep) 25%, transparent));
+  filter: drop-shadow(0 6px 24px oklch(0 0 0 / 55%));
 }
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
-@utility shadow-card { box-shadow: var(--shadow-card); }
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
 @utility hero-glow {
-  background:
-    radial-gradient(55% 45% at 50% 8%, color-mix(in oklab, var(--primary-glow) 30%, transparent), transparent 70%),
-    radial-gradient(35% 30% at 50% 0%, oklch(0.99 0.01 95 / 70%), transparent 70%);
+  background: radial-gradient(50% 40% at 50% 10%, oklch(0.85 0.01 240 / 10%), transparent 70%);
 }
 @utility reveal {
   opacity: 0;
