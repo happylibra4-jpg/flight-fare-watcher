@@ -38,26 +38,58 @@ export default function Index() {
       <SiteHeader />
       <main className="flex-1">
         <section className="hero-glow">
-          <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 md:py-32">
+          <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-16 sm:px-6 md:grid-cols-[1.05fr_0.95fr] md:py-24">
             <Reveal>
-              <span className="inline-block rounded-full border bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
+              <span className="inline-flex items-center gap-2 rounded-full border bg-card/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground shadow-card">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
                 機票降價通知 · From Taipei
               </span>
-              <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl">
-                <span className="text-gradient">Flight Price Notifier</span>
+              <h1 className="mt-7 text-6xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
+                <span className="block">Flight Price</span>
+                <span className="text-gradient italic">Notifier</span>
               </h1>
-              <p className="mt-6 text-xl font-semibold sm:text-2xl">
-                設定航線與目標價，機票降價就通知你
-              </p>
-              <p className="mt-3 text-base text-muted-foreground sm:text-lg">
-                Set a route and a target price — we email you when the fare drops.
-              </p>
+              <div className="mt-8 border-l-4 border-primary pl-5">
+                <p className="text-xl font-bold sm:text-2xl">設定航線與目標價，機票降價就通知你</p>
+                <p className="mt-2 text-base text-muted-foreground sm:text-lg">
+                  Set a route and a target price — we email you when the fare drops.
+                </p>
+              </div>
               <Link
                 to="/sign-up"
-                className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3 font-semibold text-primary-foreground shadow-glow transition hover:opacity-90"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 font-bold text-primary-foreground shadow-glow transition hover:-translate-y-0.5 hover:opacity-95"
               >
                 免費註冊 Get started <ArrowRight className="h-4 w-4" />
               </Link>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className="relative mx-auto w-full max-w-sm md:max-w-md">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-4 rotate-3 rounded-[2.5rem] bg-primary-glow/40 blur-2xl"
+                />
+                <div className="relative -rotate-2 overflow-hidden rounded-[2rem] border-[10px] border-card bg-card shadow-card">
+                  <img
+                    src="/hero-pumpkin.webp"
+                    alt="Pumpkin-shaped car on a misty autumn road"
+                    width={900}
+                    height={1272}
+                    className="aspect-[4/5] w-full object-cover object-top"
+                  />
+                </div>
+                <span className="absolute -left-4 top-10 rotate-[-4deg] rounded-full border bg-card px-3.5 py-1.5 text-xs font-extrabold tracking-wide shadow-card">
+                  TPE → NRT
+                </span>
+                <div className="absolute -bottom-6 -right-3 w-44 rotate-2 rounded-2xl border bg-card p-4 shadow-card sm:-right-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                    Price drop 降價
+                  </p>
+                  <p className="font-display mt-1 text-3xl font-bold text-primary">−18%</p>
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-secondary">
+                    <div className="h-full w-4/5 rounded-full bg-gradient-primary" />
+                  </div>
+                </div>
+              </div>
             </Reveal>
           </div>
         </section>
