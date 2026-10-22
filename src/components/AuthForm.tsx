@@ -30,7 +30,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
     <div className="min-h-screen hero-glow">
       <SiteHeader right={<span />} />
       <main className="mx-auto max-w-md px-4 py-16 sm:py-24">
-        <div className="animate-in fade-in slide-in-from-bottom-4 rounded-2xl border bg-card p-8 duration-500">
+        <div className="animate-in fade-in slide-in-from-bottom-4 rounded-2xl border bg-card p-8 shadow-card duration-500">
           <h1 className="text-2xl font-bold">{isUp ? "Sign up / 註冊" : "Sign in / 登入"}</h1>
           <form onSubmit={onSubmit} className="mt-6 space-y-4">
             <input className={input} type="email" required placeholder="Email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />

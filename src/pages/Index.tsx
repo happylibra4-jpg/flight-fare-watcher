@@ -66,7 +66,7 @@ export default function Index() {
           <div className="grid gap-6 md:grid-cols-3">
             {features.map((f, i) => (
               <Reveal key={f.title} delay={i * 120}>
-                <div className="h-full rounded-2xl border bg-card p-7 transition hover:border-primary/50">
+                <div className="h-full rounded-2xl border bg-card p-7 shadow-card transition hover:-translate-y-1 hover:border-primary/50">
                   <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-accent-foreground">
                     <f.icon className="h-5 w-5" />
                   </span>

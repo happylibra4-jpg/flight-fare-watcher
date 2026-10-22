@@ -41,7 +41,7 @@ export default function AppPage() {
         }
       />
       <main className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
-        <div className="animate-in fade-in slide-in-from-bottom-4 rounded-2xl border bg-card p-8 duration-500 sm:p-12">
+        <div className="animate-in fade-in slide-in-from-bottom-4 rounded-2xl border bg-card p-8 shadow-card duration-500 sm:p-12">
           <h1 className="break-all text-3xl font-bold sm:text-4xl">Hi {user.email}</h1>
           <p className="mt-6 text-lg">
             你的航線追蹤儀表板即將上線 — 下一個里程碑會加上訂閱航線的功能。
